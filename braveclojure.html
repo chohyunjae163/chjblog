@@ -3,6 +3,9 @@
 <head>
 	<meta charset="UTF-8">
 	<meta name="description" content="this is an awesome website">
+  <style>
+    nobr { color:grey}
+  </style>
 	<title>J</title>
 </head>
 <body>
@@ -15,25 +18,25 @@
     <h4>Chapter 3<h4>
       <ol>
         <li><h5 >Use the str, vector, list, hash-map, and hash-set functions.</h5></li>
-        <pre style="background-color:#000000; white-space: pre-line;" >
-          <code style="color:#05FF18;">
-            ;;with more than one arg, returns the concatenation of the str values of the args.
+        <pre style="background-color:Black; white-space: pre-line;" >
+          <code style="color:LightGreen;">
+            <nobr>;;with more than one arg,str returns the concatenation of the str values of the args.</nobr>
             (str "Hello" "World")
             =>"HelloWorld"
             
-            ;;A Vector is a collection of values indexed by contiguous integers.
+            <nobr>;;A Vector is a collection of values indexed by contiguous integers.</nobr>
             (vector 1 6 12)
             =>[1 6 12]
 
-            ;;Lists are collections.
+            <nobr>;;Lists are collections.</nobr>
             (list 6 320 79)
             =>(6 320 79)
 
-            ;;A Map is a collection that maps keys to values.
+            <nobr>;;A Map is a collection that maps keys to values.</nobr>
             (hash-map :a 1 :b 3 :c 8)
             => {c:8, b: 3, :a 1}
 
-            ;;Sets are collections of unique values.
+            <nobr>;;Sets are collections of unique values.</nobr>
             (hash-set :j :t :c :f)
             => #{:j :t :c :f}
           </code>
