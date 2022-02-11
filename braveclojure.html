@@ -4,7 +4,9 @@
 	<meta charset="UTF-8">
 	<meta name="description" content="this is an awesome website">
   <style>
-    nobr { color:grey}
+    comment { color:grey }
+    code {color:white}
+    repl {color:LightGreen}
   </style>
 	<title>J</title>
 </head>
@@ -19,26 +21,26 @@
       <ol>
         <li><h5 >Use the str, vector, list, hash-map, and hash-set functions.</h5></li>
         <pre style="background-color:Black; white-space: pre-line;" >
-          <code style="color:LightGreen;">
-            <nobr>;;with more than one arg,str returns the concatenation of the str values of the args.</nobr>
+          <code>
+            <comment>;;with more than one arg,str returns the concatenation of the str values of the args.</comment>
             (str "Hello" "World")
-            =>"HelloWorld"
+            <repl>=>"HelloWorld"</repl>
             
-            <nobr>;;A Vector is a collection of values indexed by contiguous integers.</nobr>
+            <comment>;;A Vector is a collection of values indexed by contiguous integers.</comment>
             (vector 1 6 12)
-            =>[1 6 12]
+            <repl>=>[1 6 12]</repl>
 
-            <nobr>;;Lists are collections.</nobr>
+            <comment>;;Lists are collections.</comment>
             (list 6 320 79)
-            =>(6 320 79)
+            <repl>=>(6 320 79)</repl>
 
-            <nobr>;;A Map is a collection that maps keys to values.</nobr>
+            <comment>;;A Map is a collection that maps keys to values.</comment>
             (hash-map :a 1 :b 3 :c 8)
-            => {c:8, b: 3, :a 1}
+            <repl>=> {c:8, b: 3, :a 1}</repl>
 
-            <nobr>;;Sets are collections of unique values.</nobr>
+            <comment>;;Sets are collections of unique values.</comment>
             (hash-set :j :t :c :f)
-            => #{:j :t :c :f}
+            <repl>=> #{:j :t :c :f}</repl>
           </code>
         </pre>
       </ol>
