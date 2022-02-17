@@ -5,8 +5,9 @@
 	<meta name="description" content="this is an awesome website">
   <style>
     comment { color:grey }
-    code {color:white}
-    repl {color:LightGreen}
+    code { color:white }
+    repl { color:LightGreen }
+    pre {background-color:Black;}
   </style>
 	<title>J</title>
 </head>
@@ -19,8 +20,9 @@
   <div>
     <h4>Chapter 3<h4>
       <ol>
-        <li><h5 >Use the str, vector, list, hash-map, and hash-set functions.</h5></li>
-        <pre style="background-color:Black; white-space: pre-line;" >
+        <li>
+          <h5 >Use the str, vector, list, hash-map, and hash-set functions.</h5>
+        <pre>
           <code>
             <comment>;;with more than one arg,str returns the concatenation of the str values of the args.</comment>
             (str "Hello" "World")
@@ -42,11 +44,40 @@
             (hash-set :j :t :c :f)
             <repl>=> #{:j :t :c :f}</repl>
           </code>
-        </pre>
+        </pre></li>
+        <li><h5 >Write a function that takes a number and adds 100 to it.</h5>
+          <pre>
+            <code>
+              (def add100 #(+ 100 %))
+            </code>
+          </pre>
+        </li>
+        <li>
+          <h5 >Write a function, dec-maker, that works exactly like the function inc-maker except with subtraction</h5>
+          <pre>
+            <code>
+              (defn dec-maker [dec-by] #(- % dec-by))
+            </code>
+          </pre>
+        </li>
+        <li>
+          <h5>Write a function, mapset, that works like map except the return value is a set</h5>
+          <pre>
+            <code>
+              (defn my-map 
+                [f coll] 
+                  (reduce (fn [new-coll val]
+                    (conj new-coll (f val)))
+                    '()
+                    coll))
+              (def mapset #(set (my-map %1 %2)))
+            </code>
+          </pre>
+        </li>
       </ol>
-    
   </div>
 </body>
 </html>
+
 
 
