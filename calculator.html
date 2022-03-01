@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <title>Calculator</title>
+  <script type="text/javascript">
+    function calculate(equation){
+      let elem = document.getElementById('answer');
+      elem.innerHTML = "I dont have an answer yet"
+    }
+  </script>
+  <body>
+    <p style="text-align: right;"><a href="index.html">Back</a></p>
+    <p>Calculator - Can calculate anything!</p>
+    <form>
+      <label for="equation">Write a equation:</label>
+      <input type="text" id="equation"> <button type="button" onclick="calculate('ddd')">=</button><br>
+      <span>equals to <strong id="answer"></strong></span>
+    </form>
+  </body>
+</head>
