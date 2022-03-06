@@ -1,14 +1,15 @@
-<!DOCTYPE html>
-<html>
-    <body>
-        <p style="text-align: right;"><a href="index.html">Back</a></p>
-        <p>Calculator - Can calculate anything!</p>
-        <form action="calculator.php" method="post"> 
-            write a equation  <input type="text" name="equation">
-            <input type="submit" value=" = "><br>
-            <?php if(isset($_POST['equation'])): ?>
-            It is  <?php echo $_POST["equation"]; ?>
-            <?php endif; ?>
-        </form>
-    </body>
-</html>
+<?php 
+    declare(strict_types=1);
+    function calculate($expression){
+        $stack = array();
+        $str_len = strlen($expression);
+        for($index = 0; $index < $str_len; $index++){
+            $token = $expression[$index];
+            if($token == "/" || $token == "*")
+                array_pop($stack);
+            else
+                array_push($stack,$token);
+        }
+        return $stack;
+    }
+?>
