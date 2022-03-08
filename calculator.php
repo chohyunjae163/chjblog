@@ -1,29 +1,26 @@
 <?php 
     declare(strict_types=1);
-    function calculate($expression){
-        $stack = array();
+    function calculate(string $str){
+        $stack = explode(" ",$str);
         $result = 0;
-        $str_len = strlen($expression);
-        for($index = 0; $index < $str_len; $index++){
-            $token = $expression[$index];
-            if($token == "/"){
-               
-            }else if($token == "*") {
-            }
-               
-            else
-                array_push($stack,$token);
-        }
         while(count($stack) > 0){
             $element = array_pop($stack);
-            if ( $element == "+" ) {
+            if ( $element == "*" ) {
+
+            } else if ( $element == "/" ) {
+
+            } else if ( $element == "+" ) {
                 $operand = array_pop($stack);
-                $result += $operand;
+                $result = (float)$operand + $result;
             } else if ( $element == "-" ) {
                 $operand = array_pop($stack);
-                $result -= $operand;
+                $result = (float)$operand - $result;
+            } else if ( $element == ")" ) {
+                //while()
+            } else if ( is_numeric($element) ) {
+                $result = $element;
             }
         }
-        return $stack;
+        return "$str  = $result";
     }
 ?>

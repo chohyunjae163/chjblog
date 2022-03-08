@@ -9,8 +9,8 @@
             <?php require 'calculator.php';?>
             <?php if(isset($_POST['equation'])):?>
             <?php  $data = $_POST['equation'];
-            $result =  calculate($data);?>
-            It is  <?php  echo implode("",$result); endif; ?>
+            $result =  calculate($data);
+            echo $result; endif; ?>
         </form>
     </body>
 </html>
