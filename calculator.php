@@ -1,6 +1,19 @@
 <?php 
     declare(strict_types=1);
-    function calculate(string $str){
+    function parse(string $str) {
+        $len = strlen($str);
+        for ( $index = 0; $index < $len; $index++ ) {
+            echo $str[$index];
+            echo "<br>";
+            $element = $str[$index];
+            if(is_numeric($element)) {
+                
+            }
+        }
+        return $str;
+    }
+
+    function calculate( string $str ) {
         $arr = explode(" ",$str);
         $result = 0;
         $stack = array();
@@ -8,29 +21,33 @@
             $element = $arr[$index];
             if(is_numeric($element) || $element == "+" || $element == "-") {
                 array_push($stack,$arr[$index]);
-            }else if ( $element == "*" ) {
+            } else if ( $element == "*" ) {
                 $operand = array_pop($stack);
                 $index += 1;
                 $operand_2 = $arr[$index];
-                $result = (float)$operand * $operand_2;
+                $mul = (float)$operand * (float)$operand_2;
+                array_push($stack,$mul);
             } else if ( $element == "/" ) {
+                $operand = array_pop($stack);
+                $index += 1;
+                $operand_2 = $arr[$index];
+                $mul = (float)$operand / (float)$operand_2;
+                array_push($stack,$mul);
             } 
         }
-        /*
-        while ( count($arr) > 0 ) {
-            $element = array_pop($arr);
+        
+        while ( count($stack) > 0 ) {
+            $element = array_pop($stack);
             if ( $element == "+" ) {
-                $operand = array_pop($arr);
+                $operand = array_pop($stack);
                 $result = (float)$operand + $result;
             } else if ( $element == "-" ) {
-                $operand = array_pop($arr);
+                $operand = array_pop($stack);
                 $result = (float)$operand - $result;
             } else if ( is_numeric($element) ) {
                 $result = $element;
             }
         }
-        */
-
         return "$str  = $result";
     }
 ?>
