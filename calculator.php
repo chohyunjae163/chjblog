@@ -1,49 +1,66 @@
 <?php 
     declare(strict_types=1);
-    function parse(string $str) {
+    function trim_equation(string $str) {
         $len = strlen($str);
+        $arr = array();
+        $queue = array();
         for ( $index = 0; $index < $len; $index++ ) {
-            echo $str[$index];
-            echo "<br>";
             $element = $str[$index];
-            if(is_numeric($element)) {
-                
-            }
+            if ( $element == "+" || $element == "-" || $element == "*" || $element == "/") {
+                $num = "";
+                while(count($queue) > 0)
+                    $num = $num . array_shift($queue);
+
+                array_push($arr,$num,$element);
+
+            } else
+                if ( is_numeric ( $element ) )
+                    $queue[] = $element;
         }
-        return $str;
+        $number_len = count($queue);
+        if($number_len > 0) {
+            $num = "";
+
+            while(count($queue) > 0)
+                $num = $num . array_shift($queue);    
+
+            $arr[] = $num;
+        }
+        return $arr;
     }
 
     function calculate( string $str ) {
-        $arr = explode(" ",$str);
-        $result = 0;
+        $arr = trim_equation($str);
         $stack = array();
         for ( $index = 0; $index < count($arr); $index++ ) {
             $element = $arr[$index];
             if(is_numeric($element) || $element == "+" || $element == "-") {
-                array_push($stack,$arr[$index]);
+                $stack[] = $element;
             } else if ( $element == "*" ) {
                 $operand = array_pop($stack);
                 $index += 1;
                 $operand_2 = $arr[$index];
-                $mul = (float)$operand * (float)$operand_2;
-                array_push($stack,$mul);
+                $result = (float)$operand * (float)$operand_2;
+                $stack[] = $result;
             } else if ( $element == "/" ) {
                 $operand = array_pop($stack);
                 $index += 1;
                 $operand_2 = $arr[$index];
-                $mul = (float)$operand / (float)$operand_2;
-                array_push($stack,$mul);
+                $result = (float)$operand / (float)$operand_2;
+                $stack[] = $result;
             } 
         }
-        
-        while ( count($stack) > 0 ) {
-            $element = array_pop($stack);
+        print_r($stack);
+        $result = 0;
+        $queue = $stack;
+        while ( count($queue) > 0 ) {
+            $element = array_shift($queue);
             if ( $element == "+" ) {
-                $operand = array_pop($stack);
-                $result = (float)$operand + $result;
+                $operand = array_shift($queue);
+                $result = (float)$result + $operand;
             } else if ( $element == "-" ) {
-                $operand = array_pop($stack);
-                $result = (float)$operand - $result;
+                $operand = array_shift($queue);
+                $result = (float)$result - $operand;
             } else if ( is_numeric($element) ) {
                 $result = $element;
             }
